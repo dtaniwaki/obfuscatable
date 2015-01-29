@@ -9,7 +9,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(params[:post])
+    if Rails::VERSION::MAJOR >= 4
+      @post = Post.create!(params.require(:post).permit!)
+    else
+      @post = Post.create!(params[:post])
+    end
     redirect_to @post
   end
 

@@ -65,4 +65,4 @@ end
 
 ActiveRecord::Base.extend Obfuscatable
 ActiveRecord::Base.extend Obfuscatable::ClassMethods
-ActiveRecord::Relation.include Obfuscatable::ClassMethods
+ActiveRecord::Relation.__send__ :include, Obfuscatable::ClassMethods
